@@ -18,7 +18,12 @@ test.describe('Task 3 — Waiting on Dynamic Content', () => {
     await page.goto('/dynamic_loading/2');
 
     const startButton = page.getByRole('button', { name: 'Start' });
-    const helloWorld = 
+    const helloWorld = page.getByText('Hello World!');
+
+    await startButton.click();
+
+    await expect(helloWorld).toBeVisible();
+    await expect(helloWorld).toHaveText('Hello World!');
   });
 
 });
